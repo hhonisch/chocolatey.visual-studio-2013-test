@@ -1,0 +1,60 @@
+############################################################
+# Root workflow for building
+############################################################
+name: Build
+
+run-name: Build ${{github.run_id}}
+
+on: [push, workflow_dispatch]
+
+jobs:
+  # Cache Visual Studio 2013 installers in Github cache
+  cache-vs-installers:
+    runs-on: windows-2022
+    steps:
+      # Check for cached installers
+      - name: Check for cached VS 2013 installers
+        id: check-cache
+        uses: actions/cache/restore@v3
+        with:
+          key: vs-install
+          path: ./vs-install-cache
+          lookup-only: true
+
+      # Checkout source tree if no cache hit
+      - name: Checkout
+        if: steps.check-cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v3
+
+      # Build installers for cache if no cache hit
+      - name: Build installer cache
+        if: steps.check-cache.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: ./build/github_build_helper.ps1 -PrepareInstallCache -workingDir ./work -CacheDir ./vs-install-cache
+        
+      # Save installers to cache if no cache hit
+      - name: Save VS 2013 installers in cache
+        if: steps.check-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v3
+        with:
+          key: vs-install
+          path: ./vs-install-cache
+      
+
+  # Build package for different VS editions in a matrix
+  build-and-test:
+    # Run after job "cache-vs-installers"
+    needs: cache-vs-installers
+    # Build different VS editions
+    strategy:
+      fail-fast: false
+      matrix:
+        choco-package-id: [visual-studio-2013-professional, visual-studio-2013-premium, visual-studio-2013-ultimate]
+    
+    # Reference reusable workflow to do the actual building and testing
+    uses: ./.github/workflows/sub-build-and-test.yml
+    
+    # Pass parameters to the sub-workflow
+    with:
+      # Chocolatey package ID
+      choco-package-id: ${{matrix.choco-package-id}}

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Compare Visual Studio 2013 Editions</title>
+<style>
+body{
+	color:#333;
+	-webkit-text-stroke:1px rgba(51,51,51,.2);
+	cursor:default;
+	line-height:20px;
+	font-family:'Segoe UI',Tahoma,Helvetica,Sans-Serif;
+	font-size:.8125em;
+	margin:0;
+}
+a{
+	color:#04c;
+	-webkit-text-stroke:1px rgba(0,68,204,.2);
+	text-decoration:none;
+	cursor:pointer;
+}
+img{
+	border:none;
+	max-width:100%;
+}
+ul,ol,li,p{
+	margin:0;
+	padding:0;
+}
+ul{
+	margin-bottom:18px;
+}
+ul li{
+	margin-left:15px;
+	margin-bottom:2px;
+}
+ol li{
+	margin-left:18px;
+	margin-bottom:2px;
+}
+p{
+	margin-bottom:10px;
+}
+h1,h2,h3{
+	margin:0;
+	color:#68217a;
+	-webkit-text-stroke:1px rgba(104,33,122,.2);
+	font-weight:normal;
+}
+h1{
+	font-size:2.77em;
+	line-height:42px;
+	margin-bottom:20px;
+}
+h1.error{
+	margin-top:50px;
+}
+h2{
+	font-size:2.16em;
+	line-height:34px;
+	margin-bottom:20px;
+}
+h3{
+	font-size:1.39em;
+	font-family:'Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,Sans-Serif;
+	line-height:24px;
+	margin-bottom:20px;
+}
+h4{
+	font-family:'Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,Sans-Serif;
+	color:#333;
+	-webkit-text-stroke:1px rgba(51,51,51,.2);
+	font-size:1.08em;
+	line-height:20px;
+	margin:0 0 10px 0;
+}
+div#content{
+	margin:0 auto 130px;
+	width:980px;
+	padding:10px 10px 0 10px;
+}
+#content.withBanner{
+	padding-top:121px;
+}
+#content.wrappedNav{
+	padding-top:136px;
+}
+#content.doubleWrappedNav{
+	padding-top:170px;
+}
+#content.wrappedNav.withBanner{
+	padding-top:155px;
+}
+#content.doubleWrappedNav.withBanner{
+	padding-top:189px;
+}
+
+
+#Fragment_Content img{
+	border:1px solid #ccc;
+	margin-bottom:14px;
+	max-width:100%;
+}
+h1:target,h2:target,h3:target,div:target,p:target,#content .simpleLeftNav .mainContent h2:target{
+	margin-top:-102px;
+	padding-top:102px;
+}
+#content.withBanner h1:target,#content.withBanner h2:target,#content.withBanner h3:target,#content.withBanner div:target,#content.withBanner p:target,#content.withBanner .simpleLeftNav .mainContent h2:target{
+	margin-top:-121px;
+	padding-top:121px;
+}
+#content.wrappedNav h1:target,#content.wrappedNav h2:target,#content.wrappedNav h3:target,#content.wrappedNav div:target,#content.wrappedNav p:target,#content.wrappedNav .simpleLeftNav .mainContent h2:target{
+	margin-top:-136px;
+	padding-top:136px;
+}
+#content.wrappedNav.withBanner h1:target,#content.wrappedNav.withBanner h2:target,#content.wrappedNav.withBanner h3:target,#content.wrappedNav.withBanner div:target,#content.wrappedNav.withBanner p:target,#content.wrappedNav.withBanner .simpleLeftNav .mainContent h2:target{
+	margin-top:-155px;
+	padding-top:155px;
+}
+#content.doubleWrappedNav h1:target,#content.doubleWrappedNav h2:target,#content.doubleWrappedNav h3:target,#content.doubleWrappedNav div:target,#content.doubleWrappedNav p:target,#content.doubleWrappedNav .simpleLeftNav .mainContent h2:target{
+	margin-top:-170px;
+	padding-top:170px;
+}
+#content.doubleWrappedNav.withBanner h1:target,#content.doubleWrappedNav.withBanner h2:target,#content.doubleWrappedNav.withBanner h3:target,#content.doubleWrappedNav.withBanner div:target,#content.doubleWrappedNav.withBanner p:target,#content.doubleWrappedNav.withBanner .simpleLeftNav .mainContent h2:target{
+	margin-top:-189px;
+	padding-top:189px;
+}
+@media print{
+	#ux-header,#fourColumnFooter,#leftBaseFooter,#Fragment_BaseFooterLinks,.leftNavigation,.socialLinks{
+		display:none!important;
+	}
+}
+
+table{
+	color:#333;
+	-webkit-text-stroke:1px rgba(51,51,51,.2);
+	line-height:16px;
+	width:100%;
+	margin:25px 0 25px 0;
+	table-layout:fixed;
+}
+.compare{
+	display:inline-block;
+	width:100%;
+}
+.compare table{
+	margin:15px 0 0 0;
+}
+.compare h2{
+	margin-top:20px;
+	margin-bottom:0;
+}
+.compare ul,.compare ol{
+	margin-bottom:20px;
+}
+.compare li{
+	margin-bottom:10px;
+}
+table td,table th{
+	padding:15px 10px 15px 10px;
+	text-align:center;
+	border:none;
+	min-height:26px;
+	vertical-align:middle;
+}
+table td.left,table th.left{
+	text-align:left;
+	padding-left:0;
+	padding-right:20px;
+	width:auto;
+}
+.compare table td.left,.compare table th.left{
+	width:36.5%;
+}
+table thead{
+	font-family:'Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,Sans-Serif;
+}
+table thead a{
+	font-family:'Segoe UI',Tahoma,Helvetica,Sans-Serif;
+	font-weight:normal;
+}
+table .fill{
+	background:#eee;
+}
+table td{
+	border-top:solid 1px #969696;
+}
+table .content.tblSubHeader{
+	background-color:#505050;
+	color:#fff;
+	-webkit-text-stroke:1px rgba(255,255,255,.2);
+	font-family:'Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,Sans-Serif;
+}
+table .content.tblSubHeader td{
+	padding-left:15px;
+}
+
+</style>
+
+
+</head>
+<body class="">
+<div id="content">
+<div id="VSSimple">
+<div data-fragmentname="Title" id="Fragment_Title" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Compare Visual Studio 2013 Editions</h1>
+</div>
+
+<div data-fragmentname="Content" id="Fragment_Content" xmlns="http://www.w3.org/1999/xhtml">
+<div class="RichText">
+<div class="compare" xmlns="">
+<table align="center" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr class="heading">
+			<th style="width:300px;text-align:left;">&nbsp;</th>
+			<th class="fill" style="vertical-align:bottom;">Ultimate<br /></th>
+			<th style="vertical-align:bottom;">Premium<br /></th>
+			<th style="vertical-align:bottom;">Pro<br /></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Debugging and Diagnostics</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">IntelliTrace in Production</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">IntelliTrace (Historical Debugging)</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">IntelliTrace Performance Indicators</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Metrics</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">.NET Memory Dump Analysis</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Graphics Debugging</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Advanced Web Debugging (Page Inspector)</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Browser Link</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Static Code Analysis</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Map Debugger Integration</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Debugger</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Windows 8 Simulator</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Performance and Diagnostics Hub</td>
+			<td class="fill">✓ <sup>1</sup></td>
+			<td>✓ <sup>1</sup></td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Windows Phone 8 Emulator</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Testing Tools</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Web Load &amp; Performance Testing</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Microsoft Fakes (Unit Test Isolation)</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Coverage</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Coded UI Testing</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Manual Testing</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Exploratory Testing</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Test Case Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Fast-forward for Manual Testing</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Lab Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Extensible Testing Framework</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Unit Testing</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Integrated Development Environment</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">CodeLens</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Peek Definition</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Clone</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Refactoring</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Business Application Development (LightSwitch)</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">0ffice 365 Cloud Business Apps</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">One-Click Web Deployment</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Extensible Environment</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Model Resource Viewer</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Multi-Targeting</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Blend</td>
+			<td class="fill">✓</td>
+			<td>✓ <sup>2</sup></td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">JavaScript and jQuery Support</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Project &amp; Solution Compatibility with VS2010 SP1 and VS 2012</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Multiple Monitor Support</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Development Platform Support</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Windows Desktop Development</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Windows Store Apps Development for Windows 8.1</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Maintaining existing Windows Store Apps for Windows 8.0</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Web Development</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Windows Phone 8 Development</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Office 365, Office and SharePoint Development</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Cloud Development</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">SQL Server Development using SSDT</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Architecture and Modeling</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Architecture Explorer</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Architecture and Layer Diagrams</td>
+			<td class="fill">✓</td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Architecture validation</td>
+			<td class="fill">✓</td>
+			<td>✓ <sup>3</sup></td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">UML&reg; 2.0 Compliant Diagrams(Activity, Use Case, Sequence, Class, and Component)</td>
+			<td class="fill">✓</td>
+			<td>✓ <sup>4</sup></td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Visualize Code with Dependency Graphs(By Assembly, By Namespace, and By Class)</td>
+			<td class="fill">✓</td>
+			<td>✓ <sup>3</sup></td>
+			<td class="fill">✓ <sup>4</sup></td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Map</td>
+			<td class="fill">✓</td>
+			<td>✓ <sup>3</sup></td>
+			<td class="fill">✓ <sup>4</sup></td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Lab Management</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Virtual environment setup &amp; teardown</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Provision environment from template</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Checkpoint environment</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Team Foundation Server</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Agile Portfolio Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Team Room</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Work Item Charting</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓ <sup>3</sup></td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Request and Manage Feedback</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Release Management</td>
+			<td class="fill">✓ <sup>9</sup></td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Backlog Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Sprint Planning</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Kanban board</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Agile Task boards</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">SharePoint <sup>5</sup>integration (Team Project Portal)</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Reporting &amp; BI</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Project and Project Server <sup>6</sup>integration</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">System Center <sup>7</sup>integration</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Version Control using TFVC Repositories</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Version Control using Git-based Repositories</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code comments on Changesets or Git commits</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Work Item Tracking</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Build Automation</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Visual Studio Online services</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Cloud-based Web Load and Performance Testing</td>
+			<td class="fill">✓ <sup>8</sup></td>
+			<td>&nbsp;</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Agile Portfolio Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Team Room</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Work Item Charting</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓ <sup>3</sup></td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Request and Manage Feedback</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Backlog Management</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Sprint Planning</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Kanban board</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Agile Task boards</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Version Control using TFVC Repositories</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Version Control using Git-based Repositories</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code comments on Changesets or Git commits</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Work Item Tracking</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Build Automation</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content tblSubHeader">
+			<td colspan="4" style="width:300px;text-align:left;">Collaboration tools</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">PowerPoint Storyboarding</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Code Review</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Task Suspend/Resume</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">&nbsp;</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Team Explorer</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		<tr class="content">
+			<td style="width:300px;text-align:left;">Team Explorer Everywhere (third-party development tools support)</td>
+			<td class="fill">✓</td>
+			<td>✓</td>
+			<td class="fill">✓</td>
+		</tr>
+		
+	</tbody>
+</table>
+</div>
+
+<div xmlns="">
+<h3>Footnotes:</h3>
+
+<ol>
+	<li>Includes Tier Interaction Profiling</li>
+	<li>Includes SketchFlow</li>
+	<li>Read-Only</li>
+	<li>Read-Only diagrams</li>
+	<li>Microsoft SharePoint Server is licensed separately</li>
+	<li>Microsoft Project and Project Server are licensed separately</li>
+	<li>Microsoft System Center is licensed separately</li>
+	<li>Usage above your monthly allotment billed to your Windows Azure subscription</li>
+	<li>Includes (1) Release Management Client for Visual Studio 2013</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</body></html>

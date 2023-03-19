@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageData>
+  <IsoDownloadUrl></IsoDownloadUrl>
+  <IsoChecksum></IsoChecksum>
+  <InstallerName>vs_ultimate.exe</InstallerName>
+  <!-- Microsoft Visual Studio Ultimate 2013 with Update 5-->
+  <Uninstall RegKey="{e0adb164-3889-4c84-8f06-0acce5a859df}" RegValue="QuietUninstallString" Match="^&quot;(.*?)&quot;\s*(.*)" Command="$($Matches[1])" FileType="exe" Args="$($Matches[2])" />
+  <!-- Microsoft SQL Server Data Tools - enu -->
+  <Uninstall RegKey="{AC8E0CF4-42A1-4151-B684-97CF6FD726CF}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {AC8E0CF4-42A1-4151-B684-97CF6FD726CF} /qn" />
+  <!-- Microsoft SQL Server 2014 Express LocalDB -->
+  <Uninstall Arch="x86" RegKey="{4A1DEB7A-341B-453E-A3AF-7EA9902F9711}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {4A1DEB7A-341B-453E-A3AF-7EA9902F9711} /qn" />
+  <Uninstall Arch="x64" RegKey="{AB8DE9BA-19E1-446A-BCFA-6B3DA9751E21}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {AB8DE9BA-19E1-446A-BCFA-6B3DA9751E21} /qn" />
+  <!-- Microsoft SQL Server 2014 Management Objects -->
+  <Uninstall RegKey="{2774595F-BC2A-4B12-A25B-0C37A37049B0}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {2774595F-BC2A-4B12-A25B-0C37A37049B0} /qn" />
+  <!-- Microsoft SQL Server 2014 Management Objects (x64) -->
+  <Uninstall Arch="x64" RegKey="{1F9EB3B6-AED7-4AA7-B8F1-8E314B74B2A5}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {1F9EB3B6-AED7-4AA7-B8F1-8E314B74B2A5} /qn" />
+  <!-- Microsoft SQL Server 2014 Transact-SQL ScriptDom -->
+  <Uninstall Arch="x86" RegKey="{C340BAB2-9A21-41B9-A465-7AC7B1DF773E}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {C340BAB2-9A21-41B9-A465-7AC7B1DF773E} /qn" />
+  <Uninstall Arch="x64" RegKey="{020CDFE0-C127-4047-B571-37C82396B662}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {020CDFE0-C127-4047-B571-37C82396B662} /qn" />
+  <!-- Microsoft SQL Server 2014 T-SQL Language Service -->
+  <Uninstall RegKey="{47D08E7A-92A1-489B-B0BF-415516497BCE}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {47D08E7A-92A1-489B-B0BF-415516497BCE} /qn" />
+  <!-- Microsoft System CLR Types for SQL Server 2014 -->
+  <Uninstall RegKey="{4AEB505C-95E1-4964-9B64-8D27F3186D30}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {4AEB505C-95E1-4964-9B64-8D27F3186D30} /qn" />
+  <!-- Microsoft System CLR Types for SQL Server 2014 -->
+  <Uninstall Arch="x64" RegKey="{8C06D6DB-A391-4686-B050-99CC522A7843}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {8C06D6DB-A391-4686-B050-99CC522A7843} /qn" />
+  <!-- Microsoft SQL Server 2012 Express LocalDB -->
+  <Uninstall Arch="x86" RegKey="{FE939060-416C-4ECD-890E-13776E2707C4}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {FE939060-416C-4ECD-890E-13776E2707C4} /qn" />
+  <Uninstall Arch="x64" RegKey="{6C026A91-640F-4A23-8B68-05D589CC6F18}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {6C026A91-640F-4A23-8B68-05D589CC6F18} /qn" />
+  <!-- Microsoft SQL Server Data Tools Build Utilities - enu -->
+  <Uninstall RegKey="{6781FF9B-E87D-4A03-9373-A55A288B83FA}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {6781FF9B-E87D-4A03-9373-A55A288B83FA} /qn" />
+  <!-- Microsoft SQL Server 2012 Management Objects -->
+  <Uninstall RegKey="{2F7DBBE6-8EBC-495C-9041-46A772F4E311}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {2F7DBBE6-8EBC-495C-9041-46A772F4E311} /qn" />
+  <!-- Microsoft SQL Server 2012 Management Objects (x64) -->
+  <Uninstall Arch="x64" RegKey="{43A5C316-9521-49C3-B9B6-FCE5E1005DF0}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {43A5C316-9521-49C3-B9B6-FCE5E1005DF0} /qn" />
+  <!-- Microsoft SQL Server 2012 Transact-SQL ScriptDom -->
+  <Uninstall Arch="x86" RegKey="{E7654811-38F9-4225-9688-827FDA716582}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {E7654811-38F9-4225-9688-827FDA716582} /qn" />
+  <Uninstall Arch="x64" RegKey="{54C5041B-0E91-4E92-8417-AAA12493C790}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {54C5041B-0E91-4E92-8417-AAA12493C790} /qn" />
+  <!-- Microsoft SQL Server 2012 T-SQL Language Service -->
+  <Uninstall RegKey="{04DD7AF4-A6D3-4E30-9BB9-3B3670719234}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {04DD7AF4-A6D3-4E30-9BB9-3B3670719234} /qn" />
+  <!-- Microsoft System CLR Types for SQL Server 2012 -->
+  <Uninstall RegKey="{070C38AC-05CE-43DF-9A20-141332F6AB2B}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {070C38AC-05CE-43DF-9A20-141332F6AB2B} /qn" />
+  <!-- Microsoft System CLR Types for SQL Server 2012 (x64) -->
+  <Uninstall Arch="x64" RegKey="{05FF8209-C4F1-4C77-BC28-791653156D20}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {05FF8209-C4F1-4C77-BC28-791653156D20} /qn" />
+  <!-- Microsoft SQL Server 2012 Command Line Utilities -->
+  <Uninstall Arch="x86" RegKey="{5EF1EBC5-4A40-4D1C-B02E-0C54BC93FD06}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {5EF1EBC5-4A40-4D1C-B02E-0C54BC93FD06} /qn" />
+  <Uninstall Arch="x64" RegKey="{58FED865-4F13-408D-A5BF-996019C4B936}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {58FED865-4F13-408D-A5BF-996019C4B936} /qn" />
+  <!-- Microsoft SQL Server 2012 Data-Tier App Framework -->
+  <Uninstall RegKey="{1B876496-B3A2-4D22-9B12-B608A3FD4B8B}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {1B876496-B3A2-4D22-9B12-B608A3FD4B8B} /qn" />
+  <!-- Microsoft SQL Server 2012 Data-Tier App Framework (x64) -->
+  <Uninstall Arch="x64" RegKey="{A6BA243E-85A3-4635-A269-32949C98AC7F}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {A6BA243E-85A3-4635-A269-32949C98AC7F} /qn" />
+  <!-- Microsoft SQL Server 2012 Native Client -->
+  <Uninstall Arch="x86" RegKey="{544ACD54-9FAA-4A60-A1E7-B2EC3AA75D24}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {544ACD54-9FAA-4A60-A1E7-B2EC3AA75D24} /qn" />
+  <Uninstall Arch="x64" RegKey="{D411E9C9-CE62-4DBF-9D92-4CB22B750ED5}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {D411E9C9-CE62-4DBF-9D92-4CB22B750ED5} /qn" />
+  <!-- Microsoft SQL Server Compact 4.0 SP1 ENU -->
+  <Uninstall Arch="x86" RegKey="{773AC1E4-5F27-4DF6-A932-7FDDE35C069D}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {773AC1E4-5F27-4DF6-A932-7FDDE35C069D} /qn" />
+  <!-- Microsoft SQL Server Compact 4.0 SP1 x64 ENU -->
+  <Uninstall Arch="x64" RegKey="{78909610-D229-459C-A936-25D92283D3FD}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {78909610-D229-459C-A936-25D92283D3FD} /qn" />
+  <!-- Microsoft SQL Server System CLR Types -->
+  <Uninstall RegKey="{A47FD1BF-A815-4A76-BE65-53A15BD5D25D}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {A47FD1BF-A815-4A76-BE65-53A15BD5D25D} /qn" />
+  <!-- Microsoft SQL Server System CLR Types (x64) -->
+  <Uninstall Arch="x64" RegKey="{4701DEDE-1888-49E0-BAE5-857875924CA2}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {4701DEDE-1888-49E0-BAE5-857875924CA2} /qn" />
+  <!-- Prerequisites for SSDT -->
+  <Uninstall RegKey="{21373064-AD95-48DB-A32E-0D9E08EF7355}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {21373064-AD95-48DB-A32E-0D9E08EF7355} /qn" />
+  <!-- Prerequisites for SSDT -->
+  <Uninstall RegKey="{35C1D9D6-87C0-46A3-B1B4-EDBCC063221C}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {35C1D9D6-87C0-46A3-B1B4-EDBCC063221C} /qn" />
+  <!-- WCF RIA Services V1.0 SP2 -->
+  <Uninstall RegKey="{5D8DD6A8-C4D7-4554-93F9-F1CC28C72600}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {5D8DD6A8-C4D7-4554-93F9-F1CC28C72600} /qn" />
+  <!-- Microsoft Silverlight 5 SDK -->
+  <Uninstall RegKey="{E1FBB3D4-ADB0-4949-B101-855DA061C735}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {E1FBB3D4-ADB0-4949-B101-855DA061C735} /qn" />
+  <!-- Microsoft Silverlight -->
+  <Uninstall RegKey="{89F4137D-6C26-4A84-BDB8-2E5A4BB71E00}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {89F4137D-6C26-4A84-BDB8-2E5A4BB71E00} /qn" />
+  <!-- Microsoft Web Deploy 3.5 -->
+  <Uninstall Arch="x86" RegKey="{D58573E7-F82D-41E4-B10B-3041202A51D2}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {D58573E7-F82D-41E4-B10B-3041202A51D2} /qn" />
+  <Uninstall Arch="x64" RegKey="{69A998C5-00A9-42CA-AB4E-C31CFFCD9251}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {69A998C5-00A9-42CA-AB4E-C31CFFCD9251} /qn" />
+  <!-- IIS 8.0 Express -->
+  <Uninstall Arch="x86" RegKey="{B8FFB7D6-6ABD-47C3-8BAD-86FF5D8F3EDC}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {B8FFB7D6-6ABD-47C3-8BAD-86FF5D8F3EDC} /qn" />
+  <Uninstall Arch="x64" RegKey="{7BF61FA9-BDFB-4563-98AD-FCB0DA28CCC7}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {7BF61FA9-BDFB-4563-98AD-FCB0DA28CCC7} /qn" />
+  <!-- Microsoft Help Viewer 2.1 -->
+  <Uninstall RegKey="{0398BFBC-991B-3275-9463-D2BF91B3C80B}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {0398BFBC-991B-3275-9463-D2BF91B3C80B} /qn" />
+  <!-- Microsoft .NET Framework 4.5.1 Multi-Targeting Pack (ENU) -->
+  <Uninstall RegKey="{D3517C62-68A5-37CF-92F7-93C029A89681}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {D3517C62-68A5-37CF-92F7-93C029A89681} /qn" />
+  <!-- Microsoft .NET Framework 4.5.1 Multi-Targeting Pack -->
+  <Uninstall RegKey="{6A0C6700-EA93-372C-8871-DCCF13D160A4}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {6A0C6700-EA93-372C-8871-DCCF13D160A4} /qn" />
+  <!-- Microsoft .NET Framework 4.5 Multi-Targeting Pack -->
+  <Uninstall RegKey="{56E962F0-4FB0-3C67-88DB-9EAA6EEFC493}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {56E962F0-4FB0-3C67-88DB-9EAA6EEFC493} /qn" />
+  <!-- Microsoft .NET Framework 4.5.1 SDK -->
+  <Uninstall RegKey="{19A5926D-66E1-46FC-854D-163AA10A52D3}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {19A5926D-66E1-46FC-854D-163AA10A52D3} /qn" />
+  <!-- Microsoft .NET Framework 4.5 SDK -->
+  <Uninstall RegKey="{4AE57014-05C4-4864-A13D-86517A7E1BA4}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {4AE57014-05C4-4864-A13D-86517A7E1BA4} /qn" />
+  <!-- Microsoft Visual Studio 2010 Tools for Office Runtime (x86) -->
+  <Uninstall Arch="x86" RegKey="{4DC59BF3-0D72-3CE8-BFEF-1E8FAF689EB0}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {4DC59BF3-0D72-3CE8-BFEF-1E8FAF689EB0} /qn" />
+  <!-- Microsoft Visual Studio 2010 Tools for Office Runtime (x64) -->
+  <Uninstall Arch="x64" RegKey="{9495AEB4-AB97-39DE-8C42-806EEF75ECA7}" RegValue="UninstallString" Command="MsiExec.exe" FileType="exe" Args="/X {9495AEB4-AB97-39DE-8C42-806EEF75ECA7} /qn" />
+  <!-- Windows Phone 8.1 Emulators - ENU -->
+  <Uninstall Arch="x64" Reg="32" RegKey="{166a69f6-6512-47ea-a342-17d954fc059a}" RegValue="QuietUninstallString" Match="^&quot;(.*?)&quot;\s*(.*)" Command="$($Matches[1])" FileType="exe" Args="$($Matches[2])" />
+  <!-- Microsoft Visual C++ 2012 Redistributable (x86) -->
+  <Uninstall RegKey="{95716cce-fc71-413f-8ad5-56c2892d4b3a}" RegValue="QuietUninstallString" Match="^&quot;(.*?)&quot;\s*(.*)" Command="$($Matches[1])" FileType="exe" Args="$($Matches[2])" />
+  <!-- Microsoft Visual C++ 2012 Redistributable (x64) -->
+  <Uninstall Arch="x64" Reg="32" RegKey="{a1909659-0a08-4554-8af1-2175904903a1}" RegValue="QuietUninstallString" Match="^&quot;(.*?)&quot;\s*(.*)" Command="$($Matches[1])" FileType="exe" Args="$($Matches[2])" />
+</PackageData>

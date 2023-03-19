@@ -1,0 +1,5 @@
+PackageId;ShortId;Name;Version;Tags;DownloadUrl;Checksum
+visual-studio-2013-professional;vs-2013-pro;Visual Studio 2013 Professional with Update 5;12.0.40629;professional;https://download.microsoft.com/download/F/2/E/F2EFF589-F7D7-478E-B3AB-15F412DA7DEB/vs2013.5_pro_enu.iso;85FDDE5E636774C9869BCAAB4D2DED83E7A9388014771BF228577EEA6112B033
+visual-studio-2013-premium;vs-2013-prem;Visual Studio 2013 Premium with Update 5;12.0.40629;premium;https://download.microsoft.com/download/6/5/F/65F510B7-D597-4E80-8EFE-86DDCFCC7C43/vs2013.5_prem_enu.iso;BEC971770B06524D82AAFC370673022E9502161A8CB1840D51DA08772CB69801
+visual-studio-2013-ultimate;vs-2013-ult;Visual Studio 2013 Ultimate with Update 5;12.0.40629;ultimate;https://download.microsoft.com/download/E/2/A/E2ADF1BE-8FA0-4436-A260-8780444C8355/vs2013.5_ult_enu.iso;43A2F252CB3B21CCE1149C212F436E9E8190AE73B489F951601A546B62752BEF
+

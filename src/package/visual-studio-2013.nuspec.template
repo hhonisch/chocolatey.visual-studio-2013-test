@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id></id>
+    <version></version>
+    <packageSourceUrl>https://github.com/hhonisch/chocolatey.visual-studio-2013</packageSourceUrl>
+    <owners>Hartmut Honisch</owners>
+    <title></title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2013/dd831853(v=vs.120)</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/hhonisch/chocolatey.help-workshop@8b6c9c78b32832169228fd585c3da05f210caa74/data/vs-2013.png</iconUrl>
+    <licenseUrl>https://cdn.jsdelivr.net/gh/hhonisch/chocolatey.help-workshop@8b6c9c78b32832169228fd585c3da05f210caa74/data/%VS_PACKAGE_ID_SHORT%-license.htm</licenseUrl>
+    <copyright>Microsoft (c) 2015</copyright>
+    <tags>visual-studio visual studio 2013 vs windows compiler ide</tags>
+    <summary>State-of-the-art tools and services that you can use to create great apps for devices, the cloud, and everything in between.</summary>
+    <description>Visual Studio 2013 is an integrated development environment (IDE) from Microsoft. 
+It is used to develop computer programs for Microsoft Windows superfamily of operating systems, as well as web sites, web applications and web services. 
+Visual Studio uses Microsoft software development platforms such as Windows API, Windows Forms, Windows Presentation Foundation, Windows Store and Microsoft Silverlight. 
+It can produce both native code and managed code.
+
+### Package Specific
+This package installs Visual Studio 2013 using the official offline installer (ISO) published by Microsoft. 
+Unless you provide a valid product key, Visual Studio 2013 will run with license "30 day trial (for evaluation purposes only)".
+#### Package Parameters
+The following package parameters can be set:
+
+ * `/InstallDir:` - Where to install the application - defaults to "`$env:ProgramFiles(x86)`" on 64 bit Windows and "`$env:ProgramFiles`" on 32 bit Windows
+ * `/IsoLocation:` - Where to get the Visual Studio offline installer (ISO) from  - may be either a URL (http:// or https:// or file://) or a path.\
+   Defaults to "`%VS_DOWNLOAD_URL%`"
+ * `/ProductKey:` - A valid product key for this version of Visual Studio 2013.
+ 
+
+To pass parameters, use `--params "''"` (e.g. `choco install %VS_PACKAGE_ID% [other options] --params="'/InstallDir:C:\Visual Studio 2013 /IsoLocation:C:\Temp\VSInstall.iso /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX'"`).\
+To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
+	  </description>
+    <releaseNotes></releaseNotes>
+    <dependencies>
+      <dependency id="imdisk" version="2.0.9" />
+    </dependencies>  
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+    <file src="tools\chocolateyuninstall.ps1" target="tools" />
+    <file src="tools\.skipAutoUninstall" target="tools" />
+    <file src="tools\PackageData.xml" target="tools" />
+    <file src="tools\AdminDeployment.xml" target="tools" />
+    <file src="..\..\LICENSE.md" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,77 @@
+<Project DefaultTargets="Clean;Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Default build properties -->
+  <PropertyGroup>
+    <!-- Project root dir -->
+    <RootDir>$([System.IO.Path]::GetDirectoryName($(MSBuildProjectDirectory)))</RootDir>
+    <!-- Directory containing artifacts to be distributed -->
+    <DistDir>$(RootDir)\dist</DistDir>
+    <!-- Directory containing package sources -->
+    <PackageDir>$(RootDir)\src\package</PackageDir>
+    <!-- Directory containing tests -->
+    <TestDir>$(RootDir)\test</TestDir>
+    <!-- Package ID -->
+    <PackageId>visual-studio-2013-professional</PackageId>
+    <!-- Visual Studio version -->
+    <VsVersion>1.0.0</VsVersion>
+    <!-- Package version -->
+    <PackageVersion>$(VsVersion).0</PackageVersion>
+    <!-- Default dir for test installation -->
+    <VsTestInstallDir>$(TestDir)\VS 2013</VsTestInstallDir>
+  </PropertyGroup>
+
+
+  <!-- Clean everything -->
+  <Target Name="Clean" DependsOnTargets="CleanDist;CleanPackage"/>
+
+  <!-- Clean dist files -->
+  <Target Name="CleanDist">
+    <ItemGroup>
+      <CleanDist_Files Include="$(DistDir)\*.nupkg"/>
+    </ItemGroup>
+    <Delete Files="@(CleanDist_Files)"/>
+  </Target>
+
+  <!-- Clean package files -->
+  <Target Name="CleanPackage">
+    <ItemGroup>
+      <CleanPackage_Files Include="$(PackageDir)\*.nupkg"/>
+      <CleanPackage_Files Include="$(PackageDir)\*.nuspec"/>
+      <CleanPackage_Files Include="$(PackageDir)\tools\PackageData.xml"/>
+      <CleanPackage_Files Include="$(PackageDir)\tools\AdminDeployment.xml"/>
+    </ItemGroup>
+    <Delete Files="@(CleanPackage_Files)"/>
+  </Target>
+
+
+  <!-- Build everything -->
+  <Target Name="Build" DependsOnTargets="BuildPackage"/>
+
+  <!-- Build Package -->
+  <Target Name="BuildPackage">
+    <!-- Prepare package files -->
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(MSBuildThisFileDirectory)\build_helper.ps1&#39;&quot; -GeneratePackageFiles -PackageID $(PackageId) -PackageVersion $(PackageVersion) -PackageDir &quot;$(PackageDir)&quot;"/>
+    <!-- Run Chocolatey -->
+    <Exec Command="choco pack" WorkingDirectory="$(PackageDir)"/>
+    <ItemGroup>
+      <BuildPackage_Files Include="$(PackageDir)\*.nupkg"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(BuildPackage_Files)" DestinationFolder="$(DistDir)"/>
+  </Target>
+
+
+  <!-- Build release info -->
+  <Target Name="BuildReleaseInfo">
+    <!-- Store meta info -->
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(MSBuildThisFileDirectory)\github_build_helper.ps1&#39;&quot; StoreReleaseMetaInfo"/>
+    <!-- Write release notes -->
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(MSBuildThisFileDirectory)\github_build_helper.ps1&#39;&quot; StoreReleaseNotes"/>
+  </Target>
+
+ 
+  <!-- Run integration tests -->
+  <Target Name="Test">
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(TestDir)\TestPackageInstall.ps1&#39;&quot; -PackageName $(PackageId) -PackageVersion $(PackageVersion) -PackageSourceDir &quot;$(PackageDir)&quot; -PackageInstallDir &quot;$(VsTestInstallDir)&quot;"/>
+  </Target>
+ 
+</Project>

@@ -1,0 +1,115 @@
+############################################################
+# Reusable workflow for building and testing with given parameters
+############################################################
+name: Sub-Workflow Build and Test
+
+on: 
+  workflow_call:
+    inputs:
+      # Chocolatey package ID
+      choco-package-id:
+        required: true
+        type: string
+ 
+jobs:
+  
+  # Build nuget package
+  build:
+          
+    runs-on: windows-2022
+
+    steps:
+      # Output run ID - in case we need it to release the artifacts. 
+      # For information, also dump entire GitHub context.
+      - name: "Current run ID ${{github.run_id}}: Dump Context"
+        env:
+          GITHUB_CONTEXT: ${{toJson(github)}}
+        run: |
+          echo "Run ID: ${{github.run_id}}"
+          echo ${env:GITHUB_CONTEXT}
+
+      # Checkout source tree
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # We need msbuild
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1
+       
+      # Build artifacts
+      - name: Build
+        run: msbuild .\build\build.proj /t:Build /p:PackageId=${{inputs.choco-package-id}}
+
+      # Upload arifacts to make them available for next job
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Dist-${{inputs.choco-package-id}}
+          path: |
+            ./dist/*
+            !./dist/.keep
+
+  # Test nuget package
+  test:
+    needs: build
+          
+    runs-on: windows-2022
+
+    steps:
+      # Output run ID - in case we need it to release the artifacts. 
+      # For information, also dump entire GitHub context.
+      - name: "Current run ID ${{github.run_id}}: Dump Context"
+        env:
+          GITHUB_CONTEXT: ${{toJson(github)}}
+        run: |
+          echo "Run ID: ${{github.run_id}}"
+          echo ${env:GITHUB_CONTEXT}
+
+      # Checkout source tree
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      # We need msbuild
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1
+       
+      # Download arifacts to test
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: Dist-${{inputs.choco-package-id}}
+          path: ./dist
+      
+      # Get cached VS 2013 installers
+      - name: Get cached installers
+        id: cache-iso-img
+        uses: actions/cache/restore@v3
+        with:
+          key: vs-install
+          path: ./vs-install-cache
+          fail-on-cache-miss: true
+
+      # Compose installer for current package
+      - name: Compose installer from cache
+        shell: pwsh
+        run: |
+          mkdir ./vs-install
+          move ./vs-install-cache/common/* ./vs-install
+          move ./vs-install-cache/${{inputs.choco-package-id}}/* ./vs-install
+
+      # Run package integration tests
+      - name: Run Integration Tests
+        shell: pwsh
+        env: 
+          VS_INSTALLER_LOCATION: ./vs-install
+        run: |
+          msbuild .\build\build.proj /t:Test /p:PackageId=${{inputs.choco-package-id}} "/p:VsTestInstallDir=D:\VS 2013"
+          copy "$env:TEMP\chocolatey\${{inputs.choco-package-id}}.setup.log" "./test/logs/${{inputs.choco-package-id}}.setup.log"
+
+      # Upload arifacts to make them available for next job
+      - name: Upload artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test-${{inputs.choco-package-id}}
+          path: ./test/logs/*
