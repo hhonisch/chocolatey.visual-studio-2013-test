@@ -27,9 +27,9 @@ function Main() {
 
     # Parse package params
     $pp = Get-PackageParameters
-    # Location of installer iso
-    if (!$pp['IsoLocation']) {
-        $pp['IsoLocation'] = $isoDownloadUrl
+    # Location of installer
+    if (!$pp['Installer']) {
+        $pp['Installer'] = $isoDownloadUrl
     }
 
     $tmpDir = $null
@@ -40,22 +40,34 @@ function Main() {
         Write-Host "Create temp dir $tmpDir"
         New-Item -ItemType Directory -Path $tmpDir | Out-Null
 
-        # Download offline installer
-        if ($isoDownloadUrl -match '.*/(.*?)$') {
-            $isoName = $Matches[1]
+        if ($pp['Installer'] -match '\.iso$') {
+            # Installer is ISO file
+            Write-Debug "Installing from ISO file"
+
+            # Download offline installer
+            if ($isoDownloadUrl -match '.*/(.*?)$') {
+                $isoName = $Matches[1]
+            }
+            else {
+                throw "Unable to extract iso name from $isoDownloadUrl"
+            }
+            $isoPath = Join-Path $tmpDir $isoName
+            Get-ChocolateyWebFile -PackageName $packageName -FileFullPath $isoPath -Url ($pp['Installer']) -Checksum $isoChecksum -ChecksumType 'sha256' | Out-Null
+            Write-Host "Visual Studio offline installer downloaded to $isoPath"
+
+            # Mounting image
+            $mountDrive = [string] (GetAvailableDriveLetter) + ':'
+            Write-Host "Mounting ISO to drive $mountDrive"
+            imdisk -a -f "$isoPath" -m $mountDrive
+            $isoIsMounted = $true
+            $installerPath = "$mountDrive\$installerName"
         }
         else {
-            throw "Unable to extract iso name from $isoDownloadUrl"
-        }
-        $isoPath = Join-Path $tmpDir $isoName
-        Get-ChocolateyWebFile -PackageName $packageName -FileFullPath $isoPath -Url ($pp['IsoLocation']) -Checksum $isoChecksum -ChecksumType 'sha256' | Out-Null
-        Write-Host "Visual Studio offline installer downloaded to $isoPath"
+            # Installer is directory with files
+            Write-Debug "Installing from directory"
 
-        # Mounting image
-        $mountDrive = [string] (GetAvailableDriveLetter) + ':'
-        Write-Host "Mounting ISO to drive $mountDrive"
-        imdisk -a -f "$isoPath" -m $mountDrive
-        $isoIsMounted = $true
+            $installerPath = Join-Path $pp['Installer'] $installerName
+        }
 
         # Build install args
         $logFilePath = Join-Path $env:TEMP "$packageName.setup.log"
@@ -69,7 +81,7 @@ function Main() {
         }
 
         # Running installer
-        Install-ChocolateyInstallPackage -PackageName $packageName -FileType 'exe' -File "$mountDrive\$installerName" -SilentArgs $installArgs -validExitCodes @(0, 3010)
+        Install-ChocolateyInstallPackage -PackageName $packageName -FileType 'exe' -File $installerPath -SilentArgs $installArgs -validExitCodes @(0, 3010, -2147185721)
     }
     finally {
         # Unmount ISO

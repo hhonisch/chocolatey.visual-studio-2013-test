@@ -58,19 +58,25 @@ function Main() {
     Write-Host "*** Install dir: $pkgInstalltDir`n"
 
     # Check whether to use local copy of ISO file
-    if ($env:VS_ISO_LOCATION) {
-        $isoLocParam = " /IsoLocation:$env:VS_ISO_LOCATION"
+    if ($env:VS_INSTALLER_LOCATION) {
+        $isoLocParam = " /Installer:$env:VS_INSTALLER_LOCATION"
     }
     else {
         $isoLocParam = ""
     }
 
-    & choco install $PackageName --source="$pkgSourceDir;chocolatey" --yes --force --no-progress --log-file="$chocolateyLogPath" --params="'/InstallDir:$pkgInstalltDir $isoLocParam'"
+    $cmd = "choco install $PackageName --source=`"$pkgSourceDir;chocolatey`" --yes --force --no-progress --log-file=`"$chocolateyLogPath`" --params=`"'/InstallDir:$pkgInstalltDir $isoLocParam'`""
+    Write-Host "*** Executing: $cmd"
+    Invoke-Expression "& $cmd"
+    if ($LASTEXITCODE -ne 0) { throw "Failed" }
 
 
     # Uninstall package
     Write-Host "`n*** Uninstalling chocolatey package: $PackageName`n"
-    & choco uninstall $PackageName --yes --force --no-progress --log-file="$chocolateyLogPath"
+    $cmd = "choco uninstall $PackageName --yes --force --no-progress --log-file=`"$chocolateyLogPath`""
+    Write-Host "*** Executing: $cmd"
+    Invoke-Expression "& $cmd"
+    if ($LASTEXITCODE -ne 0) { throw "Failed" }
 
     Write-Host "`nFinished"
 }

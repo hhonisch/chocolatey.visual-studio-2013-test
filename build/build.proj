@@ -50,7 +50,7 @@
   <!-- Build Package -->
   <Target Name="BuildPackage">
     <!-- Prepare package files -->
-    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(MSBuildThisFileDirectory)\build_helper.ps1&#39;&quot; -GeneratePackageFiles -PackageID $(PackageId) -PackageVersion $(PackageVersion) -PackageDir &quot;$(PackageDir)&quot;"/>
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -File &quot;$(MSBuildThisFileDirectory)\build_helper.ps1&quot; -GeneratePackageFiles -PackageID $(PackageId) -PackageVersion $(PackageVersion) -PackageDir &quot;$(PackageDir)&quot;"/>
     <!-- Run Chocolatey -->
     <Exec Command="choco pack" WorkingDirectory="$(PackageDir)"/>
     <ItemGroup>
@@ -71,7 +71,7 @@
  
   <!-- Run integration tests -->
   <Target Name="Test">
-    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted &quot;&amp; &#39;$(TestDir)\TestPackageInstall.ps1&#39;&quot; -PackageName $(PackageId) -PackageVersion $(PackageVersion) -PackageSourceDir &quot;$(PackageDir)&quot; -PackageInstallDir &quot;$(VsTestInstallDir)&quot;"/>
+    <Exec Command="powershell.exe –NonInteractive –ExecutionPolicy Unrestricted -File &quot;$(TestDir)\TestPackageInstall.ps1&quot; -PackageName $(PackageId) -PackageSourceDir &quot;$(DistDir)&quot; -PackageInstallDir &quot;$(VsTestInstallDir)&quot;"/>
   </Target>
  
 </Project>

@@ -25,8 +25,10 @@ Unless you provide a valid product key, Visual Studio 2013 will run with license
 The following package parameters can be set:
 
  * `/InstallDir:` - Where to install the application - defaults to "`$env:ProgramFiles(x86)`" on 64 bit Windows and "`$env:ProgramFiles`" on 32 bit Windows
- * `/IsoLocation:` - Where to get the Visual Studio offline installer (ISO) from  - may be either a URL (http:// or https:// or file://) or a path.\
-   Defaults to "`%VS_DOWNLOAD_URL%`"
+ * `/Installer:` - Location of Visual Studio 2013 installer to use - defaults to "`%VS_DOWNLOAD_URL%`". Valid values are:
+   * URL of an ISO image (http://... or https://... or file://...) containing the required Visual Studio 2013 installer.
+   * Path of an ISO image file containing the required Visual Studio 2013 installer.
+   * Path to a directory containing the required Visual Studio 2013 installer.
  * `/ProductKey:` - A valid product key for this version of Visual Studio 2013.
  
 

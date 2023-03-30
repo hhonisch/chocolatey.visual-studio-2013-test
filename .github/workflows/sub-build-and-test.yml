@@ -93,22 +93,26 @@ jobs:
       - name: Compose installer from cache
         shell: pwsh
         run: |
-          mkdir ./vs-install
+          mkdir ./vs-install | Out-Null
           move ./vs-install-cache/common/* ./vs-install
-          move ./vs-install-cache/${{inputs.choco-package-id}}/* ./vs-install
+          & robocopy ./vs-install-cache/${{inputs.choco-package-id}} ./vs-install /e /move /nfl /ndl
+          if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" } else { $LASTEXITCODE = 0 }
 
       # Run package integration tests
       - name: Run Integration Tests
         shell: pwsh
         env: 
-          VS_INSTALLER_LOCATION: ./vs-install
+          VS_INSTALLER_LOCATION: ${{github.workspace}}/vs-install
         run: |
           msbuild .\build\build.proj /t:Test /p:PackageId=${{inputs.choco-package-id}} "/p:VsTestInstallDir=D:\VS 2013"
-          copy "$env:TEMP\chocolatey\${{inputs.choco-package-id}}.setup.log" "./test/logs/${{inputs.choco-package-id}}.setup.log"
+          $installLog = "$env:TEMP\chocolatey\${{inputs.choco-package-id}}.setup.log"
+          if (Test-Path $installLog) {
+            copy $installLog "./test/logs/${{inputs.choco-package-id}}.setup.log"
+          }
 
       # Upload arifacts to make them available for next job
       - name: Upload artifacts
-        if: ${{ always() }}
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: Test-${{inputs.choco-package-id}}
